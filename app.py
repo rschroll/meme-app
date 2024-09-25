@@ -17,3 +17,6 @@ def load_model():
     )
     pipeline.to(device)
     return pipeline
+
+def generate_images(prompt, pipeline, n):
+    return pipeline([prompt] * n).images
