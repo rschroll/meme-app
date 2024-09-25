@@ -41,3 +41,9 @@ def add_text_to_image(image, text, text_color="white", outline_color="black",
     # Draw text
     draw.text((x, y), text, font=font, fill=text_color,
               stroke_width=border_width, stroke_fill=outline_color)
+
+def generate_memes(prompt, text, pipeline, n):
+    images = generate_images(prompt, pipeline, n)
+    for im in images:
+        add_text_to_image(im, text)
+    return images
