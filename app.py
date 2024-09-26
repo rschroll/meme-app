@@ -65,7 +65,12 @@ def main():
         elif not text:
             st.error("Please enter the text.")
         else:
-            st.text(f'{num_images} images with prompt "{prompt}" and text "{text}".')
+            with st.spinner("Generating images..."):
+                pipeline = load_model()
+                images = generate_memes(prompt, text, pipeline, num_images)
+                st.subheader("Generated images:")
+                for im in images:
+                    st.image(im)
 
 if __name__ == '__main__':
     main()
