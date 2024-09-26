@@ -1,4 +1,5 @@
 import diffusers
+import streamlit as st
 import torch
 from PIL import ImageDraw, ImageFont
 
@@ -47,3 +48,17 @@ def generate_memes(prompt, text, pipeline, n):
     for im in images:
         add_text_to_image(im, text)
     return images
+
+def main():
+    st.title("Diffusion Model Image Generator")
+
+    num_images = st.sidebar.number_input(
+        "Number of Images", min_value=1, max_value=10
+    )
+    prompt = st.sidebar.text_area("Text-to-Image Prompt")
+    text = st.sidebar.text_area("Text to Display")
+
+    st.text(f'{num_images} images with prompt "{prompt}" and text "{text}".')
+
+if __name__ == '__main__':
+    main()
