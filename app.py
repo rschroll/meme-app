@@ -58,7 +58,14 @@ def main():
     prompt = st.sidebar.text_area("Text-to-Image Prompt")
     text = st.sidebar.text_area("Text to Display")
 
-    st.text(f'{num_images} images with prompt "{prompt}" and text "{text}".')
+    generate = st.sidebar.button("Generate Images")
+    if generate:
+        if not prompt:
+            st.error("Please enter a prompt.")
+        elif not text:
+            st.error("Please enter the text.")
+        else:
+            st.text(f'{num_images} images with prompt "{prompt}" and text "{text}".')
 
 if __name__ == '__main__':
     main()
