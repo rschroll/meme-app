@@ -1,3 +1,5 @@
+import os
+
 import diffusers
 import streamlit as st
 import torch
@@ -8,7 +10,7 @@ if torch.cuda.is_available():
 else:
     device = "cpu"
 
-LORA_WEIGHTS = "rschroll/maya_model_v1_lora"
+LORA_WEIGHTS = os.environ["LORA_WEIGHTS"]
 
 @st.cache_resource
 def load_model():
