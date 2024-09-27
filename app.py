@@ -15,7 +15,7 @@ LORA_WEIGHTS = os.environ["LORA_WEIGHTS"]
 @st.cache_resource
 def load_model():
     pipeline = diffusers.AutoPipelineForText2Image.from_pretrained(
-        "CompVis/stable-diffusion-v1-4", torch_dtype=torch.float16
+        "CompVis/stable-diffusion-v1-4"
     )
     pipeline.load_lora_weights(
         LORA_WEIGHTS, weight_name="pytorch_lora_weights.safetensors"
